@@ -1,3 +1,6 @@
+# generated target #
+target/**/*
+
 *.class
 
 # Package Files #

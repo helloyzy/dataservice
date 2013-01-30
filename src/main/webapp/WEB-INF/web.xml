@@ -3,5 +3,25 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+	<display-name>Employee information service for perficient GDC</display-name>
+
+	<context-param>
+		<param-name>dataLoadingTime</param-name>
+		<param-value>03:00:00</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>com.perficient.dataservice.listener.DataServiceContextListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>GetEmployeeInfoServlet</servlet-name>
+		<servlet-class>com.perficient.dataservice.servlet.GetEmployeeInfoServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GetEmployeeInfoServlet</servlet-name>
+		<url-pattern>/getemployeeinfo</url-pattern>
+	</servlet-mapping>
+
 </web-app>

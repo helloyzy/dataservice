@@ -26,6 +26,12 @@ public class ExcelUtils {
 		int endColIndex = colCount > endCol ? endCol - 1 : colCount - 1;
 		
 		for (int i = startRowIndex; i < rowCount; i++) {
+			// once we read a line that the Employee No. is empty, finish data loading
+			Cell empNumCell = sheet.getCell(0, i);
+			String empNum = empNumCell.getContents().trim();
+			if (empNum == null || empNum.length() == 0) {
+				break;
+			}
 			List<String> record = new ArrayList<String>();
 			for (int j = startColIndex; j <= endColIndex; j++) {
 				Cell cell = sheet.getCell(j, i);

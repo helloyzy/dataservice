@@ -8,10 +8,14 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 public class ExcelUtilsTest {
+		
+	private static String getTestResDir() {
+		return String.format("src%stest%sresources%s", File.separator, File.separator, File.separator);
+	}
 
 	@Test
 	public void testReadFromExcel() throws Exception {
-		String testFilePath = "src\\test\\resources\\test.xls";
+		String testFilePath = getTestResDir() + "test.xls";
 		File file = new File(testFilePath);
 		if (file.exists()) {
 			List<List<String>> contents = ExcelUtils.readFromExcel(file, 2, 1,
@@ -31,7 +35,7 @@ public class ExcelUtilsTest {
 
 	@Test
 	public void testReadEmpInfo() throws Exception {
-		String testFilePath = "src\\test\\resources\\EmpInfos.xls";
+		String testFilePath = getTestResDir() + "EmpInfos.xls";
 		File file = new File(testFilePath);
 		if (file.exists()) {
 			List<List<String>> contents = ExcelUtils.readFromExcel(file, 3, 1,

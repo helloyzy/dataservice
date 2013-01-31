@@ -101,9 +101,9 @@ public class FileUtils {
 		}
 	}
 
-	public static void writeObjectToFile(String fileDir, Serializable content)
+	public static void writeObjectToFile(String filePath, Serializable content)
 			throws Exception {
-		File file = new File(fileDir);
+		File file = new File(filePath);
 		ObjectOutputStream objOutputStream = null;
 		try {
 			objOutputStream = new ObjectOutputStream(new FileOutputStream(file));
@@ -134,10 +134,10 @@ public class FileUtils {
 		}
 	}
 
-	public static Object readObjectFromFile(String fileDir) throws Exception {
+	public static Object readObjectFromFile(String filePath) throws Exception {
 		ObjectInputStream objInputStream = null;
 		try {
-			InputStream in = getInputStreamFromFilePath(fileDir);
+			InputStream in = getInputStreamFromFilePath(filePath);
 			objInputStream = new ObjectInputStream(in);
 			return objInputStream.readObject();
 		} finally {
@@ -174,6 +174,12 @@ public class FileUtils {
 				outChannel.force(false);
 			}
 		} finally {
+			if (in != null) {
+				in.close();
+			}
+			if (out != null) {
+				out.close();
+			}
 			if (inChannel != null) {
 				inChannel.close();
 			}

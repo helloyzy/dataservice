@@ -10,6 +10,9 @@ import java.util.TimerTask;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.perficient.dataservice.utils.GlobalVars;
+import com.perficient.dataservice.utils.TaskManager;
+
 public class DataServiceContextListener implements ServletContextListener {
 	
 	private Timer dataLoadingTimer = null;
@@ -21,6 +24,14 @@ public class DataServiceContextListener implements ServletContextListener {
 			dataLoadingTimer = null;
 			System.out.println("Cancel timer...");
 		}
+	}
+	
+	private void init(ServletContextEvent context) {
+		GlobalVars.initialize();
+		GlobalVars.sharedIntance().setDataLoadingTime(context.getServletContext().getInitParameter("dataLoadingTime"));
+		GlobalVars.sharedIntance().setDataFileLocation(context.getServletContext().getInitParameter("dataFileLocation"));
+		
+		TaskManager.initialize();
 	}
 
 	public void contextInitialized(ServletContextEvent arg0) {

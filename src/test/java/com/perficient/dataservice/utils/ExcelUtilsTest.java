@@ -10,7 +10,7 @@ import static junit.framework.Assert.*;
 public class ExcelUtilsTest {
 		
 	private static String getTestResDir() {
-		return String.format("src%stest%sresources%s", File.separator, File.separator, File.separator);
+		return TestUtils.getTestResDir();
 	}
 
 	@Test

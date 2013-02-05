@@ -9,6 +9,7 @@ import jxl.Cell;
 import jxl.JXLException;
 import jxl.Sheet;
 import jxl.Workbook;
+import jxl.WorkbookSettings;
 
 public class ExcelUtils {
 
@@ -18,7 +19,9 @@ public class ExcelUtils {
 		List<List<String>> result = new ArrayList<List<String>>();
 		Workbook workbook = null;
 		try {
-			workbook = Workbook.getWorkbook(srcExcelFile);
+			WorkbookSettings settings = new WorkbookSettings();
+			settings.setEncoding("UTF-8");
+			workbook = Workbook.getWorkbook(srcExcelFile, settings);
 			Sheet sheet = workbook.getSheet(0);
 			int rowCount = sheet.getRows();
 			int colCount = sheet.getColumns();

@@ -32,10 +32,13 @@ public class DataServiceContextListener implements ServletContextListener {
 		GlobalVars.sharedIntance().setDataFileLocation(context.getServletContext().getInitParameter("dataFileLocation"));
 		
 		TaskManager.initialize();
+		TaskManager.sharedInstance().submitDataLoadingTask(0);
 	}
 
 	public void contextInitialized(ServletContextEvent arg0) {
 		// TODO Auto-generated method stub
+		init(arg0);
+		/**
 		String dataLoadingTime = arg0.getServletContext().getInitParameter("dataLoadingTime");
 		System.out.println(dataLoadingTime);
 		
@@ -71,6 +74,8 @@ public class DataServiceContextListener implements ServletContextListener {
 		
 		// Date firstLoadingTime = new Date(); 
 		// dataLoadingTimer.schedule(new DataLoadingTask(), 5000);
+		 * 
+		 */
 	}
 	
 	private String dateToString(Date date) {  

@@ -35,8 +35,10 @@ public class DataLoadTask extends TimerTask {
 	}
 	
 	private void writeToLocal(List<Employee> employees) throws Exception {
+		/**
 		Employee[] empArray = employees.toArray(new Employee[0]);
 		FileUtils.writeObjectToFile(GlobalVars.sharedIntance().getLocalDataStoreLocation(), empArray);
+		*/
 	}
 	
 	private Employee[] readFromLocal() throws Exception {

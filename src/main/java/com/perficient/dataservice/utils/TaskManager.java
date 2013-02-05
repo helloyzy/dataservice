@@ -26,7 +26,7 @@ public class TaskManager {
 		sharedIntance = new TaskManager();
 	}
 	
-	public TaskManager sharedInstance() {
+	public static TaskManager sharedInstance() {
 		return sharedIntance;
 	}
 	

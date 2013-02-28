@@ -10,3 +10,4 @@ target/**/*
 
 # Mac Resources #
 *.DS_Store
+/Test.txt
